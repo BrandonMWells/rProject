@@ -1,0 +1,216 @@
+prt_in,61,142,2	script	InnKeeper#Prontera	53,{
+
+	mes "[InnKeeper]";
+	mes "Welcome, how may I help you today?";
+	switch(select("Stay the night:Eat a meal:Save")){
+		
+	case 1:
+		next;
+		mes "[InnKeeper]";
+		mes "That will be 500 Zeny, will that be okay?";
+		switch(select("Yes:No")){
+			case 1:
+				mes "[InnKeeper]";
+				mes"Have a nice night";
+				if(zeny < 500)
+				{
+					mes "[InnKeeper]";
+					mes "I'm afraid you do not have enough money.";
+					close;
+					end;
+				}
+				.@num = rand(1,3);
+				switch(.@num){
+				set Zeny,Zeny-500;
+				percentheal 100,0;
+
+				
+				case 1:
+					warp "prt_in",71,170;
+					skilleffect 34,0; sc_start SC_BLESSING,150000,10;
+					skilleffect 29,0; sc_start SC_INCREASEAGI,150000,10;
+					sleep2 10;
+
+					end;
+				case 2:
+					warp "prt_in",60,169;
+					skilleffect 34,0; sc_start SC_BLESSING,150000,10;
+					skilleffect 29,0; sc_start SC_INCREASEAGI,150000,10;
+					sleep2 10;
+					end;
+				case 3:
+					warp "prt_in",50,169;
+					skilleffect 34,0; sc_start SC_BLESSING,150000,10;
+					skilleffect 29,0; sc_start SC_INCREASEAGI,150000,10;
+					sleep2 10;
+					end;
+					
+				}
+				close;
+			case 2: 
+				mes "[InnKeeper]";
+				mes"Maybe next time";
+				
+		}
+		close;
+	case 2:
+		next;
+		mes "[InnKeeper]";
+		mes "meals are 150 Zeny each";
+
+		switch(select("Str:Agi:Dex:Int:Vit:Luk"))
+		{
+			next;
+			if(zeny < 250)
+			{
+				
+				mes "[InnKeeper]";
+				mes "I'm afraid you do not have enough money.";
+				close;
+				end;
+			}
+			mes "[InnKeeper]";
+				mes "Please give the chef some time to prepare the meal.";
+			close2;
+			progressbar "0x00ff00",3;
+			
+			set Zeny,Zeny-250;
+			case 1:
+			sc_start SC_STRFOOD,1200000,3;
+			end;
+			case 2:
+			sc_start SC_AGIFOOD,1200000,3;
+			end;
+			case 3:
+			sc_start SC_DEXFOOD,1200000,3;
+			end;
+			case 4:
+			sc_start SC_INTFOOD,1200000,3;
+			end;
+			case 5:
+			sc_start SC_VITFOOD,1200000,3;
+			end;
+			case 6:
+			sc_start SC_LUKFOOD,1200000,3;
+			end;
+		}
+		
+		close;
+	case 3:
+		mes "Your respawn has been saved";
+		savepoint "prt_in",69,136,1,2;
+		close;
+		
+
+	close;
+	}
+}
+
+
+prt_in,245,136,2	script	InnKeeper#Prontera2	53,{
+
+	mes "[InnKeeper]";
+	mes "Welcome, how may I help you today?";
+	switch(select("Stay the night:Eat a meal:Save")){
+		
+	case 1:
+		next;
+		mes "[InnKeeper]";
+		mes "That will be 500 Zeny, will that be okay?";
+		switch(select("Yes:No")){
+			case 1:
+				mes "[InnKeeper]";
+				mes"Have a nice night";
+				if(zeny < 500)
+				{
+					mes "[InnKeeper]";
+					mes "I'm afraid you do not have enough money.";
+					close;
+					end;
+				}
+				.@num = rand(1,3);
+				switch(.@num){
+				set Zeny,Zeny-500;
+				percentheal 100,0;
+
+				
+				case 1:
+					warp "prt_in",257,102;
+					skilleffect 34,0; sc_start SC_BLESSING,150000,10;
+					skilleffect 29,0; sc_start SC_INCREASEAGI,150000,10;
+					sleep2 10;
+
+					end;
+				case 2:
+					warp "prt_in",247,102;
+					skilleffect 34,0; sc_start SC_BLESSING,150000,10;
+					skilleffect 29,0; sc_start SC_INCREASEAGI,150000,10;
+					sleep2 10;
+					end;
+				case 3:
+					warp "prt_in",237,102;
+					skilleffect 34,0; sc_start SC_BLESSING,150000,10;
+					skilleffect 29,0; sc_start SC_INCREASEAGI,150000,10;
+					sleep2 10;
+					end;
+					
+				}
+				close;
+			case 2: 
+				mes "[InnKeeper]";
+				mes"Maybe next time";
+				
+		}
+		close;
+	case 2:
+		next;
+		mes "[InnKeeper]";
+		mes "meals are 150 Zeny each";
+
+		switch(select("Str:Agi:Dex:Int:Vit:Luk"))
+		{
+			next;
+			if(zeny < 250)
+			{
+				
+				mes "[InnKeeper]";
+				mes "I'm afraid you do not have enough money.";
+				close;
+				end;
+			}
+			mes "[InnKeeper]";
+				mes "Please give the chef some time to prepare the meal.";
+			close2;
+			progressbar "0x00ff00",3;
+			
+			set Zeny,Zeny-250;
+			case 1:
+			sc_start SC_STRFOOD,1200000,3;
+			end;
+			case 2:
+			sc_start SC_AGIFOOD,1200000,3;
+			end;
+			case 3:
+			sc_start SC_DEXFOOD,1200000,3;
+			end;
+			case 4:
+			sc_start SC_INTFOOD,1200000,3;
+			end;
+			case 5:
+			sc_start SC_VITFOOD,1200000,3;
+			end;
+			case 6:
+			sc_start SC_LUKFOOD,1200000,3;
+			end;
+		}
+		
+		close;
+	case 3:
+		mes "Your respawn has been saved";
+		savepoint "prt_in",239,137,1,2;
+		close;
+		
+
+	close;
+	}
+}

@@ -1,0 +1,143 @@
+prt_church,100,122,2	script	Pastor#Prontera	60,{
+
+function	CraftItem{
+	switch(select("Yes:No")){
+			if(Zeny < getarg(0) || countitem(getarg(1)) < 1 || Sp < getarg(2)){
+				next;
+				mes "[Pastor]";
+				mes "I'm afraid you do not meet the requirements";
+				close;
+				end;
+			}
+			//yes
+			case 1:
+			next;
+			mes "[Pastor]";
+			mes "be sure not to move while imbuing the scroll, we will need to start over if you do";
+			next;
+			close2; //Call close2 to prevent prorgess bar from crashing client 
+			progressbar "0x00ff00",1;
+			mes "it is finished"; //remove items 
+			//Check if player tries to bank during progress bar
+			if(Zeny < .zenycost)
+			{
+				mes "Code Error:Error Zeny Not found";
+				close;
+				end;
+			}
+			set Zeny,Zeny-.@zenycost;
+			set Sp,Sp-getarg(2);
+			delitem  getarg(1),1;
+			getitem  getarg(3),1;
+			specialeffect getarg(4);
+			close;	
+			end;
+			
+			//no
+			case 2:
+			mes "[Pastor]";
+			mes "My services will always be open to you.";
+			close;
+			end;
+		}
+	}
+
+
+	mes "[Pastor]";
+	mes "Welcome child of the goddess!";
+	switch(select("Create Blessing Scroll:Create Agility Scroll:Create Holy Water:Create Blank Scroll:Cancel")){
+
+	case 1:
+	//Make Blessing Scroll
+		next;
+		mes "[Pastor]";
+		mes "That will be 1000 Zeny and 1 Blank Scroll and 150 of your mana points, will that be okay?";
+		.@zenycost = 1000; //Zeny Cost
+		.@catalyst = 7433; //Blank Scroll
+		.@sp = 150; //SP Cost
+		.@rewarditem = 12215; //Blessing Scroll
+		.@tmp_SE = 86;//Play SE 86
+		CraftItem(.@zenycost,.@catalyst,.@sp,.@rewarditem,.@tmp_SE);
+		
+			
+	case 2:
+	//Make Agility
+		next;
+		mes "[Pastor]";
+		mes "That will be 1000 Zeny and 1 Blank Scroll and 150 of your mana points, will that be okay?";	
+		.@zenycost = 1000; //Zeny Cost
+		.@catalyst = 7433; //Blank Scroll
+		.@sp = 150; //SP Cost
+		.@rewarditem = 14589; //Increase agility Scroll
+		.@tmp_SE = 86;//Play SE 86
+		CraftItem(.@zenycost,.@catalyst,.@sp,.@rewarditem,.@tmp_SE);
+		
+	case 3:
+		next;
+		mes "[Pastor]";
+		mes "That will be 250 Zeny and 1 Empty Bottle and 50 of your mana points, will that be okay?";
+		.@zenycost = 250; //Zeny Cost
+		.@catalyst = 713; //Empty bottle
+		.@sp = 50; //SP Cost
+		.@rewarditem = 523; //holy water
+		.@tmp_SE = 86;//Play SE 86
+		CraftItem(.@zenycost,.@catalyst,.@sp,.@rewarditem,.@tmp_SE);
+		
+	case 4:
+		next;
+		mes "[Pastor]";
+		mes "Of course, we can use 3 Rotton Bandages or 10 tree roots and a fee of 250 zeny";
+		switch(select("3 Rotton Bandages:10 Tree Roots: No Thanks")){
+			case 1:
+				if(countitem(930) < 3 || zeny < 250)
+				{
+				next;
+				mes "[Pastor]";
+				mes "Come back when you have the required materials.";		
+				close;
+				end;
+				}
+				next;
+				set Zeny,Zeny-250;
+				delitem  930,3;
+				getitem  7433,1;
+				mes "[Pastor]";
+				mes "Here you go child.";	
+				close;
+				end;
+				
+			case 2:
+				if(countitem(902) < 10 || zeny < 250)
+				{
+				next;
+				mes "[Pastor]";
+				mes "Come back when you have the required materials.";		
+				close;
+				end;
+				}
+				next;
+				set Zeny,Zeny-250;
+				delitem  902,10;
+				getitem  7433,1;
+				mes "[Pastor]";
+				mes "Here you go child.";	
+				close;
+				end;
+				
+			case 3:
+
+			
+		}
+	
+	case 5:
+	next;
+	mes "[Pastor]";
+	mes "My services will always be open to you.";
+	close;
+	end;	
+
+	}
+	close;
+	end;
+	
+}

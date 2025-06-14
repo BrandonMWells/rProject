@@ -16,10 +16,7 @@
 //= 2.0 Added 4th class [Lemongrass]
 //============================================================
 
-
-
-
-prontera,245,42,2	script	Job Kafra	113,{
+prontera,245,42,6	script	Job Master	123,{
 function Get_Job_Equip;
 // Checks if the Player has the required level.
 // closes if not, returns if yes
@@ -141,9 +138,6 @@ function	Job_Options	{
 }
 
 // Begin of the NPC
-	mes "[Job Kafra]";
-	mes "Welcome if you have come to job change please fill out this paperwork";
-	next;
 	mes .NPCName$;
 	Check_Riding();
 	Check_SkillPoints();
@@ -303,7 +297,7 @@ function	Job_Menu	{
 	while(true) {
 		.@opt_cnt =  getarraysize(getarg(0));
 		if( .@opt_cnt <= 0 ) {
-			mes "You will need to see the  goddess to progress further.";
+			mes "No more jobs are available.";
 			close;
 		}
 
@@ -311,7 +305,7 @@ function	Job_Menu	{
 		if (.@opt_cnt > 1) {
 			// Multiple job classes given. Select one and save it to .@class
 			// After that confirm .@class
-			mes "Lets see you are trying to become a...";
+			mes "Select a job.";
 			.@menu$ = "";
 			for (.@i = 0; .@i < .@opt_cnt; .@i++) {
 				if( getelementofarray(getarg(0), .@i) == Job_Novice_High)
@@ -506,19 +500,19 @@ function	Get_Job_Equip	{
 
 OnInit:
 	// Initialisation, do not edit these
-	.NPCName$ = "[Job Kafra]";
+	.NPCName$ = "[Job Master]";
 	
 	// Settings
-	.FourthClass = false;				// Enable fourth classes?
-	.FourthExpanded = false;				// Enable new expanded fourth classes: Ex. Hyper Novice, Rebellion, Shinkiro/Shiranui?
-	.ThirdClass = false;					// Enable third classes?
-	.RebirthClass = false;				// Enable rebirth classes?
+	.FourthClass = true;				// Enable fourth classes?
+	.FourthExpanded = true;				// Enable new expanded fourth classes: Ex. Hyper Novice, Rebellion, Shinkiro/Shiranui?
+	.ThirdClass = true;					// Enable third classes?
+	.RebirthClass = true;				// Enable rebirth classes?
 	.SecondExpanded = true;				// Enable new expanded second classes: Ex. Super Novice, Kagerou/Oboro, Rebellion?
-	.BabyNovice = false;					// Enable Baby novice classes? Disable it if you like player must have parent to get job baby.
-	.BabyClass = false;					// Enable Baby classes?
-	.BabyThird = false;					// Enable Baby third classes?
-	.BabyExpanded = false;				// Enable Baby Expanded classes: Ex. Baby Ninja, Baby Taekwon, etc.
-	.BabySummoner = false;				// Enable Baby Summoner?
+	.BabyNovice = true;					// Enable Baby novice classes? Disable it if you like player must have parent to get job baby.
+	.BabyClass = true;					// Enable Baby classes?
+	.BabyThird = true;					// Enable Baby third classes?
+	.BabyExpanded = true;				// Enable Baby Expanded classes: Ex. Baby Ninja, Baby Taekwon, etc.
+	.BabySummoner = true;				// Enable Baby Summoner?
 	.LastJob = true;					// Enforce linear class changes?
 	.SkillPointCheck = true;			// Force player to use up all skill points?
 	.Platinum = true;					// Get platinum skills automatically?
@@ -546,5 +540,4 @@ OnInit:
 	}
 	end;
 }
-prt_in,38,107,4	duplicate(Job Kafra)	Job Kafra#wow	113
 

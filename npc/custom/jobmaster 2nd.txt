@@ -16,10 +16,7 @@
 //= 2.0 Added 4th class [Lemongrass]
 //============================================================
 
-
-
-
-prontera,245,42,2	script	Job Kafra	113,{
+prontera,245,42,6	script	Job Master	123,{
 function Get_Job_Equip;
 // Checks if the Player has the required level.
 // closes if not, returns if yes
@@ -141,9 +138,6 @@ function	Job_Options	{
 }
 
 // Begin of the NPC
-	mes "[Job Kafra]";
-	mes "Welcome if you have come to job change please fill out this paperwork";
-	next;
 	mes .NPCName$;
 	Check_Riding();
 	Check_SkillPoints();
@@ -303,7 +297,7 @@ function	Job_Menu	{
 	while(true) {
 		.@opt_cnt =  getarraysize(getarg(0));
 		if( .@opt_cnt <= 0 ) {
-			mes "You will need to see the  goddess to progress further.";
+			mes "No more jobs are available.";
 			close;
 		}
 
@@ -311,7 +305,7 @@ function	Job_Menu	{
 		if (.@opt_cnt > 1) {
 			// Multiple job classes given. Select one and save it to .@class
 			// After that confirm .@class
-			mes "Lets see you are trying to become a...";
+			mes "Select a job.";
 			.@menu$ = "";
 			for (.@i = 0; .@i < .@opt_cnt; .@i++) {
 				if( getelementofarray(getarg(0), .@i) == Job_Novice_High)
@@ -506,7 +500,7 @@ function	Get_Job_Equip	{
 
 OnInit:
 	// Initialisation, do not edit these
-	.NPCName$ = "[Job Kafra]";
+	.NPCName$ = "[Job Master]";
 	
 	// Settings
 	.FourthClass = false;				// Enable fourth classes?
@@ -546,5 +540,4 @@ OnInit:
 	}
 	end;
 }
-prt_in,38,107,4	duplicate(Job Kafra)	Job Kafra#wow	113
 

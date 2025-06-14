@@ -26,9 +26,9 @@
 //============================================================ 
 
 // Bulletin Board
-new_1-3,104,19,2	shop	PotionDealer	83,569:10
-new_1-3,95,175,0	warp	Academy_to_prontera	2,2,prontera,237,46
-prontera,238,41,0	warp	prontera_to_academy	2,2,new_1-3,95,171
+
+new_1-3,95,175,0	warp	newwarp6001b	2,2,prontera,237,46
+prontera,238,41,0	warp	newwarp6001b	2,2,new_1-3,95,171
 new_1-2,99,113,3	script	Interfaces Tutor#nv1	751,{
 	
 
@@ -385,7 +385,7 @@ new_1-3,101,19,4	script	FieldMedic	71,{
 		close2;
 		
 }
-
+new_1-3,104,19,4	shop	Item Collector#alb	74,569:-1,
 // Training Ground Mobs
 new_1-3,0,0	monster	Poring	1002,10
 new_1-3,0,0	monster	Drops	1113,10

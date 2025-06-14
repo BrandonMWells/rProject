@@ -1,0 +1,7 @@
+//NPC Blacksmith
+// Menu (Refine||Cancel)
+// Select from list of equipment 
+// Are you sure you want to refine(YES||No)
+// if Armor and refine less than 4  
+// +1 and -needed Zeny and material
+// if higher
