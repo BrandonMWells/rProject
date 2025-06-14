@@ -15732,7 +15732,7 @@ Body:
     AegisName: Scroll
     Name: Blank Scroll
     Type: Etc
-    Buy: 4000
+    Buy: 250
     Weight: 10
     Flags:
       BuyingStore: true
