@@ -1,0 +1,80 @@
+prontera,158,191,5	script	Quest Master	415,{
+
+	// ────────────────
+	// Config Section
+	// ────────────────
+	// Format: [@required_quests, @flag_name$, @item_id, @amount]
+	setarray .tiers_quests,
+	10,     // Tier 1
+	20,     // Tier 2
+	30,     // Tier 3
+	50;     // Tier 4
+
+	setarray .tiers_flags$,
+	"Tier_1",     // Tier 1
+	"Tier_2",     // Tier 2
+	"Tier_3",     // Tier 3
+	"Tier_4";     // Tier 4
+
+	setarray .tiers_items,
+	501,     // Red Potion / Tier 1
+	502,     // Orange Potion / Tier 2
+	503,     // Yellow Potion / Tier 3
+	504;     // White Potion / Tier 4
+
+	setarray .tiers_amounts,
+	5,     // Tier 1 reward
+	3,     // Tier 2 reward
+	2,     // Tier 3 reward
+	1;     // Tier 4 reward
+
+	setarray .tiers_text$,
+	"You're just getting started! Keep it up!",     // Tier 1
+	"Nice progress. Keep grinding!",                // Tier 2
+	"You're turning into a seasoned veteran.",      // Tier 3
+	"Fifty quests?! You're amazing!";               // Tier 4
+
+	set .tiers_count, getarraysize(.tiers_quests);
+
+	// ────────────────
+	// Menu Interaction
+	// ────────────────
+	mes "[Quest Master]";
+	mes "Greetings, adventurer.";
+	next;
+
+	switch(select("Check quests completed:Redeem quest rewards:Never mind")) {
+
+		// Option 1: Show current quest count
+		case 1:
+			mes "[Quest Master]";
+			mes "You've completed " + #Quests_Completed + " quests.";
+			close;
+
+		// Option 2: Attempt to redeem rewards
+		case 2:
+			mes "[Quest Master]";
+			set .@claimed, 0;
+
+			for (set .@i, 0; .@i < .tiers_count; set .@i, .@i + 1) {
+				set .@flag$, "#QuestReward_" + .tiers_flags$[.@i];
+
+				if (#Quests_Completed >= .tiers_quests[.@i] && getd(.@flag$) == 0) {
+					mes .tiers_text$[.@i];
+					getitem .tiers_items[.@i], .tiers_amounts[.@i];
+					setd .@flag$, 1;
+					set .@claimed, 1;
+				}
+			}
+
+			if (!.@claimed)
+				mes "You have no new rewards to claim right now.";
+			close;
+
+		// Option 3: Exit
+		case 3:
+			mes "[Quest Master]";
+			mes "Very well. Return when you’ve made more progress.";
+			close;
+	}
+}
