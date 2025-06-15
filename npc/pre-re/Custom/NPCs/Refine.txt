@@ -1,32 +1,23 @@
-prontera,153,191,6	script	Safe Refiner	63,{
+//prt_in,63,60,0	script	Hollgrehenn	4_M_03,
+//morocc_in,73,38,6	script	Aragham	4W_M_03,
+//payon,144,173,5	script	Antonio	4_M_ORIENT01,
+//alberta_in,28,58,0	script	Fredrik	4_M_03,
+//yuno_in01,171,21,4	script	Lambert	4_M_ORIENT01,
+//ein_in01,24,87,5	script	Manthasman	4_M_DWARF,
+//lhz_in02,282,20,7	script	Fulerr	4_M_LGTMAN,
+
+prt_in,63,60,0	script	Blacksmith	63,{
 	 disable_items;
-	.@npc_name$ = "Safe Refiner";
+	.@npc_name$ = "Blacksmith";
 	.@price = 0;
 	.@mineralcostmultiplier = 1;
-	.@canfail = 0;
+	//.@canfail = 0;
 	.@same = 0; // Check if the materials has the same refinement level
 	.@startsafe = 1; // Start counting materials after the safe refine on Hollgrehenn (4 at Weapon Lvl 4 and Armor Lvl 1)
-
-	// [ START SAFE TABLE ]
-	// At Weapon Lvl 4 / Armor Lvl 1
-	// +4 -> +5 = 1 copy
-	// +5 -> +6 = 2 copies
-	// +6 -> +7 = 3 copies
-	// +7 -> +8 = 4 copies
-	// +8 -> +9 = 5 copies
-	// +9 -> +10 = 6 copies
+	
 
 	mes "["+ .@npc_name$ +"]";
 	mes "Hello, I can safely refine any of your equipment using expensive materials. Safe refining requires additional copies of the item you are refining.";
-	mes "^4444ffCurrent Configuration:^000000";
-	mes "^222255Can Fail: ^000000"+(.@canfail == 1 ? "^aa4444Yes^000000" : "^44aa44No^000000");
-	mes "^222255Same Refinement: ^000000"+(.@same == 1 ? "^aa4444Yes^000000" : "^44aa44No^000000");
-	mes "^222255Start Safe: ^000000"+(.@startsafe == 1 ? "^44aa44Yes^000000" : "^aa4444No^000000");
-	if (.@mineralcostmultiplier > 0) mes "^222255Minerals per refine: "+.@mineralcostmultiplier+"^000000";
-	mes "^222255Zeny Cost: "+.@price+"^000000";
-	next;
-	if (.@same == 1) mes "^ff4444The materials used on this process must be of the same refinement level.^000000";
-	mes "^ff4444IMPORTANT NOTE: The cards on all the materials (except the equipped one) will be destroyed.^000000";
 	next;
 
 	setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_MID, EQI_HEAD_LOW;
@@ -78,90 +69,63 @@ prontera,153,191,6	script	Safe Refiner	63,{
 	.@count = 1;
 	
  		switch (getequipweaponlv(.@part)) {
+
 		case 1: 
-			
-			if(.@refinerycnt) > 8
-			.@price = 5000;
-			.@mineralcostmultiplier = 2;
 			.@startref = 7; 
+			.@w1[0] = 125;
+			.@mcm1[0] = 1;
+			setarray .@w1[0],250,500,1000,2000,3000,4000,5000,10000,15000,20000;
+			setarray .@mcm1[0],1,1,1,1,1,1,1,1,2,3;
+			.@price = .@w1[.@refinerycnt];
+			.@mineralcostmultiplier = .@mcm1[.@refinerycnt];
+			if (.@refinerycnt < .@startref) 
+			.@count = 0;
 			break;
 						
 		case 2: 
 			.@startref = 6; 
-			.@mineralcostmultiplier = 2;
-			.@price = 7500;
-			if(.@refinerycnt) > 7
-			.@price = 10000;
-			.@mineralcostmultiplier = 3;
+			.@w2[0] = 250;
+			.@mcm2[0] = 1;
+			setarray .@w2[0],500,1000,2000,3000,4000,5000,10000,15000,20000,40000;
+			setarray .@mcm2[0],1,1,1,1,1,1,1,2,3,4;
+			.@price = .@w2[.@refinerycnt];
+			.@mineralcostmultiplier = .@mcm2[.@refinerycnt];
+			if (.@refinerycnt < .@startref) 
+			.@count = 0;
 			break;
 		case 3: 
 			.@startref = 5; 
-			.@price = 15000;
-			.@mineralcostmultiplier = 2;
-			if(.@refinerycnt) > 5
-			.@price = 1999;
-			.@mineralcostmultiplier = 4;
-			if(.@refinerycnt) > 7
-			.@price = 50000;
-			.@mineralcostmultiplier = 6;
+			.@w3[0] = 125;
+			.@mcm3[0] = 1;
+			setarray .@w3[0],1000,2000,3000,4000,5000,10000,15000,20000,40000,80000;
+			setarray .@mcm3[0],1,1,1,1,1,1,2,3,4,5;
+			.@price = .@w3[.@refinerycnt];
+			.@mineralcostmultiplier = .@mcm3[.@refinerycnt];
+			if (.@refinerycnt < .@startref) 
+			.@count = 0;
 			break;
 		case 4:
 		default: 
 		.@startref = 4; 
-		.@price = 20000;
-		.@mineralcostmultiplier = 2;
-		if(.@refinerycnt) > 4
-		.@price = 30000;
-		.@mineralcostmultiplier = 3;
-		if(.@refinerycnt) > 7
-		.@price = 40000;
-		.@mineralcostmultiplier = 4;
-		if(.@refinerycnt) > 9
-		.@price = 50000;
-		.@mineralcostmultiplier = 5;
+		.@w4[0] = 125;
+		.@mcm4[0] = 1;
+		setarray .@w4[0],1000,2000,4000,8000,10000,15000,20000,40000,80000,100000;
+		setarray .@mcm4[0],1,1,1,1,1,2,3,4,5,6;
+		.@price = .@w4[.@refinerycnt];
+		.@mineralcostmultiplier = .@mcm4[.@refinerycnt];
+		if (.@refinerycnt < .@startref) 
+		.@count = 0;	
 		break; // Armor
 	} 
 	
-/* 	switch (getequipweaponlv(.@part)) {
-		case 1: .@startref = 7; @mineralcostmultiplier = 2;break;
-		case 2: .@startref = 6; @mineralcostmultiplier = 4;break;
-		case 3: .@startref = 5; @mineralcostmultiplier = 6;break;
-		case 4:
-		default: .@startref = 4; break; // Armor
-	} */
-		//If the weapon is at its safe refine
-	if (.@refinerycnt < .@startref) {
-		//no duplicate requirements
-		.@count = 0;
-		//count for safety is 0
-		.@mineralcostmultiplier = 1;
-		//set price
-		switch (getequipweaponlv(.@part)) {
-			case 1:
-				if(.@refinerycnt < 3)
-				.@price = 250 * .@refinerycnt; 
-				
-					
-					
-			case 2:
-				.@price = 500;
-			case 3:
-				.@price = 1000;
-			case 4:
-				.@price = 1000;
-			default:
-			
-		}
-		
-		
-	}
+	
 	mes "["+ .@npc_name$ +"]";
 	mes "To refine this I need:";
 	if(.@count > 0) {
-	if (.@same == 1) mes "^4444aa> "+(.@count)+" pcs of +"+(.@refinerycnt)+" ^003366"+getitemname(.@refineitemid)+"^000000";
+		if (.@same == 1) mes "^4444aa> "+(.@count)+" pcs of +"+(.@refinerycnt)+" ^003366"+getitemname(.@refineitemid)+"^000000";
 	else mes "^4444aa> "+(.@count)+" pcs of ^003366"+getitemname(.@refineitemid)+"^000000";
 	}
-	if (.@mineralcostmultiplier > 0) mes "^4444aa> "+(.@count*.@mineralcostmultiplier)+" pcs of "+getitemname(.@material)+"^000000";
+	if (.@mineralcostmultiplier > 0) mes "^4444aa> "+(.@mineralcostmultiplier)+" pcs of "+getitemname(.@material)+"^000000";
 	mes "^4444aa> A service fee of " + .@price + " Zeny.^000000";
 	mes "Do you really wish to continue?";
 	next;
@@ -241,7 +205,8 @@ prontera,153,191,6	script	Safe Refiner	63,{
 		}
 	}
 	if (.@mineralcostmultiplier > 0) {
-		delitem .@material,.@count*.@mineralcostmultiplier;
+		delitem .@material,.@mineralcostmultiplier;
+		//delitem .@material,.@count*.@mineralcostmultiplier;
 	}
 	Zeny = Zeny-.@price;
 
@@ -250,39 +215,10 @@ prontera,153,191,6	script	Safe Refiner	63,{
 	    callfunc("F_IsEquipRefineHack", .@part, .@refinerycnt)) {
 		mes "["+ .@npc_name$ +"]";
 		emotion ET_FRET;
-		mes "Wait a second...";
-		mes "Do you think I'm stupid?!";
-		mes "You switched the item while I wasn't looking! Get out of here!";
+		mes "Cheeky little shit";
 		close;
 	}
 
-	// Fail checking
-	if (.@canfail == 1) {
-		if (getequippercentrefinery(.@part) <= rand(100)) {
-			downrefitem .@part,0;
-			mes "[Clink]";
-			mes "Cry Hammer!! Cry!!!";
-			next;
-			switch(rand(1,5)) {
-				case 1: emotion ET_CRY; break;
-				case 2: emotion ET_PROFUSELY_SWEAT; break;
-				case 3: emotion ET_KEK; break;
-				case 4: emotion ET_SCRATCH; break;
-				case 5: emotion ET_BIGTHROB; break;
-			}
-			mes "[Clink]";
-			mes "Huh?! I failed?!";
-			next;
-			mes "[Clink]";
-			mes "Arrgg~ It's all~ Broken...? What a pity~";
-			next;
-			mes "[Clink]";
-			mes "Hey...!! Get me another one.";
-			mes "This is not possible.";
-			mes "How can my hammer fail from refining?";
-			close;
-		}
-	}
 
 	// Success refining
 	mes "["+ .@npc_name$ +"]";
