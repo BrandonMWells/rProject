@@ -1,11 +1,11 @@
-skycity,114,213,6	script	Safe Refiner	10055,{
+prontera,153,191,6	script	Safe Refiner	63,{
 	disable_items;
 	.@npc_name$ = "Safe Refiner";
-	.@price = 10000000;
-	.@mineralcostmultiplier = 15;
+	.@price = 0;
+	.@mineralcostmultiplier = 0;
 	.@canfail = 1;
 	.@same = 0; // Check if the materials has the same refinement level
-	.@startsafe = 1; // Start counting materials after the safe refine on Hollgrehenn (4 at Weapon Lvl 4 and Armor Lvl 1)
+	.@startsafe = 0; // Start counting materials after the safe refine on Hollgrehenn (4 at Weapon Lvl 4 and Armor Lvl 1)
 
 	// [ START SAFE TABLE ]
 	// At Weapon Lvl 4 / Armor Lvl 1
