@@ -43,7 +43,7 @@ prontera,158,191,5	script	Quest Master	415,{
 	mes "Greetings, adventurer.";
 	next;
 
-	switch(select("Check quests completed:Redeem quest rewards:Never mind")) {
+	switch(select("Check quests completed:Redeem quest rewards:View quest reward tiers:Never mind")) {
 
 		// Option 1: Show current quest count
 		case 1:
@@ -71,13 +71,38 @@ prontera,158,191,5	script	Quest Master	415,{
 				mes "You have no new rewards to claim right now.";
 			close;
 
-		// Option 3: Exit
+		// Option 3: View reward tiers
 		case 3:
+			mes "[Quest Master]";
+			mes "Here's what you can earn as you complete quests:";
+			next;
+
+			for (set .@i, 0; .@i < .tiers_count; set .@i, .@i + 1) {
+				set .@flag$, "#QuestReward_" + .tiers_flags$[.@i];
+				set .@line$, .tiers_quests[.@i] + " quests: " + getitemname(.tiers_items[.@i]) + " x" + .tiers_amounts[.@i];
+				if (getd(.@flag$) == 0)
+					mes .@line$ + " [UNCLAIMED]";
+				else
+					mes .@line$;
+			}
+
+			close;
+
+		// Option 4: Exit
+		case 4:
 			mes "[Quest Master]";
 			mes "Very well. Return when you've made more progress.";
 			close;
 	}
 }
+
+
+
+
+
+
+
+
 
 
 prontera,162,191,5	script	Debug Quest Tools	432,{
