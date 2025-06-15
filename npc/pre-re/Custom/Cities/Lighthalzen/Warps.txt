@@ -1,0 +1,21 @@
+//= Portal
+//============================================================
+lighthalzen,294,226,0	warp	lhz01	1,1,lighthalzen,266,200
+lighthalzen,269,200,0	warp	lhz02	1,1,lighthalzen,297,227
+lhz_cube,232,11,0	warp	lhz03	1,1,lighthalzen,310,302
+lhz_cube,232,96,0	warp	lhz04	1,1,lhz_dun02,222,6
+lighthalzen,148,300,0	warp	lhz05	1,1,lhz_dun01,149,287
+
+lighthalzen,313,301,0	script	Sewer Pipe#lt	111,{
+	mes "^3355FFYou found some sort";
+	mes "of large sewage pipe.";
+	mes "Naturally, the stench";
+	mes "emanating from inside";
+	mes "the pipe is barely endurable.^000000";
+	next;
+	if (select("Enter:Cancel") == 1) {
+		warp "lhz_cube",231,13;
+		end;
+	}
+	close;
+}
