@@ -2014,6 +2014,17 @@ Body:
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
+  - Id: 7042
+    AegisName: Leather_Bag_Of_Infinity
+    Name: Leather Bag Of Infinity
+    Type: Usable
+    Buy: 1
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      openstorage;
+      end;
   - Id: 11500
     AegisName: Light_Yellow_Pot
     Name: Light Yellow Potion

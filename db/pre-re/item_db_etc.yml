@@ -12804,12 +12804,6 @@ Body:
     Weight: 10
     Flags:
       BuyingStore: true
-  - Id: 7042
-    AegisName: Leather_Bag_Of_Infinity
-    Name: Leather Bag of Infinity
-    Type: Etc
-    Buy: 1
-    Weight: 10
   - Id: 7043
     AegisName: Fine_Sand
     Name: Fine Sand
