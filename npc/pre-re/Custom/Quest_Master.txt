@@ -74,7 +74,42 @@ prontera,158,191,5	script	Quest Master	415,{
 		// Option 3: Exit
 		case 3:
 			mes "[Quest Master]";
-			mes "Very well. Return when you’ve made more progress.";
+			mes "Very well. Return when you've made more progress.";
 			close;
 	}
 }
+
+
+prontera,162,191,5	script	Debug Quest Tools	432,{
+	mes "[Debug NPC]";
+	mes "What would you like to do?";
+	next;
+
+	switch(select("Set #Quests_Completed to 10:Set #Quests_Completed to 50:Reset all reward flags:Cancel")) {
+
+		case 1:
+			set #Quests_Completed, 10;
+			mes "Set #Quests_Completed to 10.";
+			close;
+
+		case 2:
+			set #Quests_Completed, 50;
+			mes "Set #Quests_Completed to 50.";
+			close;
+
+		case 3:
+			// Reset reward flags
+			set #QuestReward_Tier_1, 0;
+			set #QuestReward_Tier_2, 0;
+			set #QuestReward_Tier_3, 0;
+			set #QuestReward_Tier_4, 0;
+			set #Quests_Completed, 0;
+			mes "All quest reward flags reset.";
+			close;
+
+		case 4:
+			mes "Cancelled.";
+			close;
+	}
+}
+
