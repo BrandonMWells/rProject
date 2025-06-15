@@ -1,0 +1,21 @@
+prontera,158,191,2	script	Bikram	81,{
+			mes"[Bikram]";
+			mes"Hello World!";
+			next;
+			mes"[Bikram]";
+			mes"My bussy wussy :)"; //His bussy is tangible
+			next;
+			if(countitem(909) < 1){ //Jellopy
+			mes"[Bikram]";
+			mes"I'm gonna go play Factorio.";
+			close;
+			end;
+			}
+			mes"[Bikram]";
+			mes"lmao";
+			next;
+			atcommand "@kill";
+			close;
+			end;
+	
+}
