@@ -1,0 +1,9 @@
+function	script	teleport_badge{
+
+	mes "test";
+	close;
+
+
+
+
+}
