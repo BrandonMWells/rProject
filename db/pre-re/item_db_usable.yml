@@ -2031,8 +2031,7 @@ Body:
       NoMail: true
       NoAuction: true
     Script: |
-      mes "";
-      close;
+      callfunc "teleport_badge";
   - Id: 7042
     AegisName: Leather_Bag_Of_Infinity
     Name: Leather Bag Of Infinity
