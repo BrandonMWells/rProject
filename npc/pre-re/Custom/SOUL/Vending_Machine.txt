@@ -1,0 +1,38 @@
+prt_in,175,136,5	script	Vending Machine	909,{
+
+	.@zenyCost = 1000;
+	setarray .@vendingItems[0], 501, 502, 504; // Red, Orange, Yellow Potions
+
+	mes "[Vending Machine]";
+	mes "Insert " + .@zenyCost + " Zeny to receive a random result?";
+	next;
+
+	if (select("Yes:No") == 2) {
+		mes "[Vending Machine]";
+		mes "Transaction canceled.";
+		close;
+	}
+
+	if (Zeny < .@zenyCost) {
+		mes "[Vending Machine]";
+		mes "You don't have enough Zeny.";
+		close;
+	}
+
+	Zeny -= .@zenyCost;
+
+	.@roll = rand(100);
+
+	if (.@roll < 50) {
+		// 5% chance: Spawn Poring at specific coordinates
+		monster "prt_in", 174, 136, "Vending Poring", 1002, 1, "";
+		dispbottom "A mischievous Poring leaps out nearby!";
+	} else {
+		// 95% chance: Give a random item
+		.@index = rand(getarraysize(.@vendingItems));
+		getitem .@vendingItems[.@index], 1;
+		dispbottom "You received an item!";
+	}
+
+	end;
+}

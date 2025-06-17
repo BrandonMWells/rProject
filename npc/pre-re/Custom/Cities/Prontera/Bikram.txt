@@ -1,0 +1,56 @@
+prontera,132,173,5	script	Bikram	81,{
+
+	// Check if player already completed the quest
+	if (BikramQuestComplete) {
+		mes "[Bikram]";
+		mes "Bark!";
+		close;
+	}
+
+	// 5% chance to offer quest if not completed
+	.@roll = rand(100);
+	if (.@roll < 5 && !BikramQuestStarted) {
+		mes "[Bikram]";
+		mes "Hey kid, want a job?";
+		mes "Fetch me ^FF000050 Jellopy^000000 and I'll give you ^00FF005,000 Zeny^000000.";
+		next;
+		if (select("Accept the quest:No thanks") == 1) {
+			mes "[Bikram]";
+			mes "Bark! Go get them!";
+			BikramQuestStarted = 1;
+		} else {
+			mes "[Bikram]";
+			mes "Bark!";
+		}
+		close;
+	}
+	
+	// If quest was started but not completed
+	if (BikramQuestStarted && !BikramQuestComplete) {
+		if (countitem(909) >= 50) {
+			mes "[Bikram]";
+			mes "You got them!";
+			mes "Actually, I don't need them anymore.";
+			mes "You can still have the Zeny, though!";
+			BikramQuestComplete = 1;
+			set #Quests_Completed, #Quests_Completed + 1;
+			Zeny += 5000;
+			mes "Bark! (You received 5,000 Zeny)";
+		} else {
+			mes "[Bikram]";
+			mes "Still waiting on those 50 Jellopy...";
+		}
+		close;
+	}
+
+	// Default behavior
+	mes "[Bikram]";
+	mes "Bark!";
+	close;
+}
+
+prontera,136,161,1	script	Gertrude	78,{
+	mes "[Gertrude]";
+	mes "I could have sworn that dog said something just now...";
+	close;
+}

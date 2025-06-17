@@ -1,0 +1,66 @@
+prontera,276,82,2	script	Hype Guy	1313,{
+	mes "[Hype Guy]";
+	mes "Whoa! Look at you! You look like you could take on a dragon!";
+	mes "I've got just the thing for you to make your journey way cooler!";
+	next;
+
+	.@rand = rand(6);
+	switch (.@rand) {
+		case 0:
+			specialeffect2 EF_SUI_EXPLOSION;
+			sc_start SC_CURSE, 20000, 0;
+			mes "[Hype Guy]";
+			mes "My bad! You're cursed now, but honestly? Still stronger than most people at full power.";
+			mes "Let me try again and you will surely get more powerful!";
+			break;
+		case 1:
+			specialeffect2 EF_POTION_BERSERK;
+			sc_start SC_CONFUSION, 20000, 0;
+			mes "[Hype Guy]";
+			mes "Take these pills. They will enhance your performance! Trust me, dude!";
+			break;
+		case 2:
+			specialeffect2 EF_FOG;
+			sc_start SC_BLIND, 20000, 0;
+			mes "[Hype Guy]";
+			mes "I may have temporarily disabled your vision... but now your other senses are unlocked!";
+			mes "You're going to be way stronger now!";
+			break;
+		case 3:
+			specialeffect2 EF_ENHANCE;
+			sc_start SC_HALLUCINATION, 20000, 0;
+			mes "[Hype Guy]";
+			mes "I just used a pressure point to unlock your chakras.";
+			mes "Reality's bending to your will, dude. That's how powerful your aura is!";
+			break;
+		case 4:
+			specialeffect2 EF_HIT2;
+			sc_start SC_ORCISH, 20000, 0;
+			mes "[Hype Guy]";
+			mes "That Orc look? You make it work. Absolute monster in the best way.";
+			break;
+		case 5:
+			sc_start SC_INCREASEAGI,      10000, 1;
+			sc_start SC_BLESSING,         10000, 1;
+			sc_start SC_ASSUMPTIO,        10000, 1;
+			sc_start SC_ANGELUS,          10000, 1;
+			sc_start SC_IMPOSITIO,        10000, 1;
+			sc_start SC_GLORIA,           10000, 1;
+			sc_start SC_MAGNIFICAT,       10000, 1;
+			sc_start SC_KYRIE,            10000, 1;
+			sc_start SC_ENDURE,           10000, 1;
+			sc_start SC_ASPERSIO,         10000, 1;
+			sc_start SC_WINDWALK,         10000, 1;
+			sc_start SC_TRUESIGHT,        10000, 1;
+			sc_start SC_ADRENALINE,       10000, 1;
+			sc_start SC_CLOAKING,         10000, 1;
+			sc_start SC_OVERTHRUST,       10000, 1;
+			sc_start SC_WEAPONPERFECTION, 10000, 1;
+			sc_start SC_STUN,             10000, 1;
+			mes "[Hype Guy]";
+			mes "That's what I'm talkin' about!.";
+			mes "Now I know you can take on anything!";
+			break;
+	}
+	close;
+}
