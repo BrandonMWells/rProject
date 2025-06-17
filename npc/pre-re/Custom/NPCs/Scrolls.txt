@@ -16,7 +16,7 @@ function	CraftItem{
 			mes "be sure not to move while imbuing the scroll, we will need to start over if you do";
 			next;
 			close2; //Call close2 to prevent prorgess bar from crashing client 
-			progressbar "0x00ff00",1;
+			progressbar "0x00ff00",10;
 			mes "it is finished"; //remove items 
 			//Check if player tries to bank during progress bar
 			if(Zeny < .zenycost)

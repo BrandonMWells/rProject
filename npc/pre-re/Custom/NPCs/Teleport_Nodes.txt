@@ -1,0 +1,84 @@
+
+
+function	script	Unlock_teleport_node	{
+
+	switch(getarg(0)){ //type 1.Town, 2.Dungeon, 3...etc   
+		if(#warp_node_t$[getarg(1)] == getarg(2)){
+			mes #warp_node_t$[getarg(1)] + " has been unlocked already.";
+			close;
+		}
+		
+		if(#warp_node_d$[getarg(1)] == getarg(2)){
+			mes #warp_node_d$[13] + " has been unlocked already.";
+			close;
+		}
+		progressbar "0x00ff00",1;
+/* 		mes "V:" + getarg(0);
+		close; */
+		case 1:
+			set #warp_node_t$[getarg(1)],getarg(2);
+			mes #warp_node_t$[getarg(1)] + " has been unlocked. T:";
+			break;
+		case 2:
+			set #warp_node_d$[getarg(1)],getarg(2); //#warp_node_d$[13],"Culvert" 
+			mes #warp_node_d$[getarg(1)] + " has been unlocked. D:";
+			break;
+		
+
+		}
+		
+
+		close;
+}
+//Culvert
+/* prontera,146,89,0	script	Teleport_Node#prontera	1914,{ callfunc("Unlock_teleport_node",1,1,"prontera"); }
+payon,162,233,0	script	Teleport_Node#payon	1914,{ callfunc("Unlock_teleport_node",1,34,"payon"); }
+morroc,156,93,0	script	Teleport_Node#morroc	1914,{ callfunc("Unlock_teleport_node",1,41,"morroc"); }
+alberta,192,147,0	script	Teleport_Node#alberta	1914,{ callfunc("Unlock_teleport_node",1,38,"alberta"); }
+izlude,47,139,0	script	Teleport_Node#izlude	1914,{ callfunc("Unlock_teleport_node",1,36,"izlude"); }
+geffen,119,59,0	script	Teleport_Node#geffen	1914,{ callfunc("Unlock_teleport_node",1,35,"geffen"); }
+aldebaran,140,120,0	script	Teleport_Node#aldebaran	1914,{ callfunc("Unlock_teleport_node",1,39,"aldebaran"); }
+comodo,200,150,0	script	Teleport_Node#comodo	1914,{ callfunc("Unlock_teleport_node",1,43,"comodo"); }
+umbala,105,150,0	script	Teleport_Node#umbala	1914,{ callfunc("Unlock_teleport_node",1,45,"umbala"); }
+juno,160,170,0	script	Teleport_Node#juno	1914,{ callfunc("Unlock_teleport_node",1,46,"juno"); }
+einbroch,64,200,0	script	Teleport_Node#einbroch	1914,{ callfunc("Unlock_teleport_node",1,47,"einbroch"); }
+hugel,100,145,0	script	Teleport_Node#hugel	1914,{ callfunc("Unlock_teleport_node",1,48,"hugel"); }
+lighthalzen,150,100,0	script	Teleport_Node#lighthalzen	1914,{ callfunc("Unlock_teleport_node",1,49,"lighthalzen"); }
+rachel,130,110,0	script	Teleport_Node#rachel	1914,{ callfunc("Unlock_teleport_node",1,50,"rachel"); } */
+
+//Dungeons Prototype
+/* prontera_culvert,38,124,0	script	Teleport_Node#prontera_culvert	1914,{ callfunc("Unlock_teleport_node",2,13,"prontera_culvert"); }
+geffen_orc,97,147,0		script	Teleport_Node#geffen_orc	1914,{ callfunc("Unlock_teleport_node",2,11,"orcsdun01"); }
+payon_dungeon,149,100,0	script	Teleport_Node#payon_dungeon	1914,{ callfunc("Unlock_teleport_node",2,10,"pay_dun00"); }
+morroc_pyramid,82,155,0	script	Teleport_Node#morroc_pyramid	1914,{ callfunc("Unlock_teleport_node",2,4,"moc_pryd01"); }
+aldebaran_clock,210,60,0	script	Teleport_Node#aldebaran_clock	1914,{ callfunc("Unlock_teleport_node",2,11,"c_tower1"); }
+geffen_dungeon,130,200,0	script	Teleport_Node#geffen_dungeon	1914,{ callfunc("Unlock_teleport_node",2,19,"gef_dun00"); }
+amatsu,147,85,0		script	Teleport_Node#amatsu_dungeon	1914,{ callfunc("Unlock_teleport_node",2,3,"ama_dun01"); }
+izlude,20,200,0		script	Teleport_Node#byalan_dungeon	1914,{ callfunc("Unlock_teleport_node",2,10,"iz_dun00"); }
+alberta,230,180,0	script	Teleport_Node#sunken_ship	1914,{ callfunc("Unlock_teleport_node",2,46,"treasure01"); }
+morocc,50,160,0		script	Teleport_Node#sphinx_dungeon	1914,{ callfunc("Unlock_teleport_node",2,45,"in_sphinx1"); }
+mjolnir_01,120,95,0	script	Teleport_Node#coal_mine	1914,{ callfunc("Unlock_teleport_node",2,12,"mjol_dun01"); } */
+hu_fild05,186,210,0	script	Teleport_Node#abyss_lakes	1914,{ callfunc("Unlock_teleport_node",2,2,"abyss_01"); }
+/* mag_dun01,320,150,0	script	Teleport_Node#magma_dungeon	1914,{ callfunc("Unlock_teleport_node",2,30,"mag_dun01"); }
+ */
+
+prontera,149,185,0	script	debug#crystal	1915,{
+
+deletearray #warp_node_t$[0],getarraysize(#warp_node_t$[0]);
+deletearray #warp_node_d$[0],getarraysize(#warp_node_d$[0]);
+mes "arrays cleared";
+close;
+end; 
+}
+ 
+// Simple duel NPC: spawns two background porings that attack each other and ignore players
+// Simple duel NPC: spawns two background porings that attack each other and ignore players
+// Simple duel NPC: spawns two background porings that attack each other and ignore player
+
+
+
+
+
+
+
+
